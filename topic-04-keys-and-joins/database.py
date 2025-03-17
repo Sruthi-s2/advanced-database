@@ -38,7 +38,7 @@ def get_pet(id):
     rows = cursor.fetchall()
     try:
         (id, name, xtype, age, owner) = rows[0]
-        data = {"id": id, "name": name, "kind": kind, "age": age, "owner": owner}
+        data = {"id": id, "name": name, "kind": xtype, "age": age, "owner": owner}
 
         return data
     except:
@@ -87,8 +87,8 @@ def update_pet(id, data):
         data["age"] = 0
     cursor = connection.cursor()
     cursor.execute(
-        """update pet set name=?, age=?, type=?, owner=? where id=?""",
-        (data["name"], data["age"], data["type"], data["owner"], id),
+        """update pet set name=?, age=?, kind_id=?, owner=? where id=?""",
+        (data["name"], data["age"], data["kind_id"], data["owner"], id),
     )
     connection.commit()
 

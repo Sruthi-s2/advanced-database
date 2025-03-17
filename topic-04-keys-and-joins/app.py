@@ -42,12 +42,17 @@ def get_delete(id):
 
 @app.route("/update/<id>", methods=["GET"])
 def get_update(id):
-    data = database.get_pet(id)
+    data=dict()
+    data["data"] = database.get_pet(id)
+    kind_list = database.get_kinds()
+    data["kinds"] = kind_list
+    
     return render_template("update.html",data=data)
 
 @app.route("/update/<id>", methods=["POST"])
 def post_update(id):
     data = dict(request.form)
+    print(data)
     database.update_pet(id, data)
     return redirect(url_for("get_list"))  
 
