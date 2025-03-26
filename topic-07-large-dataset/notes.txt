@@ -23,6 +23,10 @@ Get the numeric packages
 
 $ pip install pandas
 
+Get Chinook
+
+https://github.com/lerocha/chinook-database/tree/master/ChinookDatabase
+
 
 
 
